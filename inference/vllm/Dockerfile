@@ -5,8 +5,8 @@ RUN apt-get update -y \
 
 RUN mkdir /var/run/sshd
 
-RUN useradd -rm -d /home/docker -s /bin/bash -g root -G sudo -u 1001 docker
-RUN echo 'docker:docker' | chpasswd
+RUN useradd -rm -d /home/minicpm -s /bin/bash -g root -G sudo -u 1001 minicpm
+RUN echo 'minicpm:minicpm' | chpasswd
 EXPOSE 22
 
 
@@ -57,8 +57,8 @@ RUN apt-get update -y \
 
 RUN mkdir /var/run/sshd
 
-RUN useradd -rm -d /home/docker -s /bin/bash -g root -G sudo -u 1001 docker
-RUN echo 'docker:docker' | chpasswd
+RUN useradd -rm -d /home/minicpm -s /bin/bash -g root -G sudo -u 1001 minicpm
+RUN echo 'minicpm:minicpm' | chpasswd
 EXPOSE 22
 
 
@@ -85,4 +85,4 @@ COPY --from=build /workspace/vllm/*.so /workspace/vllm/
 COPY vllm vllm
 COPY examples examples
 
-CMD ["/usr/sbin/sshd", "-d"]
+CMD ["/usr/sbin/sshd", "-D"]
