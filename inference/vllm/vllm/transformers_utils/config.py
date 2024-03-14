@@ -38,7 +38,8 @@ def get_config(model: str,
                 raise RuntimeError(err_msg) from e
             else:
                 raise e
-    except KeyError as e:
+    #except KeyError as e:
+    except:
         if os.path.exists(model):
             config = {}
             with open(f"{model}/config.json", 'r') as fin:

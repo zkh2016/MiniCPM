@@ -43,11 +43,18 @@ sampling_params = SamplingParams(**params_dict)
 llm = LLM(model=args.model_path, tensor_parallel_size=1, dtype='bfloat16')
 # Generate texts from the prompts. The output is a list of RequestOutput objects
 # that contain the prompt, generated text, and other information.
+
+import time
+
+t0 = time.time()
+tokens = 0
+
 for prompt in prompts:
     outputs = llm.generate(prompt, sampling_params)
     # Print the outputs.
     for output in outputs:
         prompt = output.prompt
+        tokens += len(output.outputs[0].token_ids)
         generated_text = output.outputs[0].text
         print("================")
         # find the first <用户> and remove the text before it.
@@ -56,3 +63,6 @@ for prompt in prompts:
         print(f"""<用户>: {clean_prompt.replace("<AI>", "")}""")
         print(f"<AI>:")
         print(generated_text)
+
+t1 = time.time()
+print("time = ", t1-t0, "decode tokens = ", tokens, "throughput = ", tokens / (t1-t0))

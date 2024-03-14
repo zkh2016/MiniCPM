@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: vllm
-Version: 0.2.2
+Version: 0.2.2+cu122
 Summary: A high-throughput and memory-efficient inference and serving engine for LLMs
 Home-page: https://github.com/vllm-project/vllm
 Author: vLLM Team
@@ -16,20 +16,6 @@ Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: ninja
-Requires-Dist: psutil
-Requires-Dist: ray>=2.5.1
-Requires-Dist: pandas
-Requires-Dist: pyarrow
-Requires-Dist: sentencepiece
-Requires-Dist: numpy
-Requires-Dist: einops
-Requires-Dist: torch>=2.1.0
-Requires-Dist: transformers>=4.34.0
-Requires-Dist: xformers>=0.0.22.post7
-Requires-Dist: fastapi
-Requires-Dist: uvicorn[standard]
-Requires-Dist: pydantic==1.10.13
 
 <p align="center">
   <picture>
